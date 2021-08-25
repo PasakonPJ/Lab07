@@ -1,12 +1,14 @@
 package se331.lab.rest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import se331.lab.rest.dao.EventDao;
 import se331.lab.rest.entity.Event;
 
 import java.util.List;
 
-public class EventServicelmpl implements EventService{
+@Service
+public class EventServiceImpl implements EventService{
 
     @Autowired
     EventDao eventDao;

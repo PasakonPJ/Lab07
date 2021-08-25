@@ -1,12 +1,13 @@
 package se331.lab.rest.dao;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Service;
 import se331.lab.rest.entity.Event;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class EventDaoImpl implements EventDao {
     List<Event> eventList;
 
