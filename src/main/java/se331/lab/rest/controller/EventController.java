@@ -22,8 +22,8 @@ public class EventController {
         eventList = new ArrayList<>();
         eventList.add(Event.builder()
                 .id(123L)
-                .category("animal welfare ")
-                .title("Cat adoption Day")
+                .category("animal welfare tood")
+                .title("Cat adoption Day tood")
                 .description("Find ur new feline friend at this event")
                 .location("Meow town")
                 .date("january 28, 2022")
