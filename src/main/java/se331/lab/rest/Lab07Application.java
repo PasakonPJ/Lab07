@@ -14,15 +14,10 @@ public class Lab07Application {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry){
-                registry.addMapping("/**").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/**").allowedOrigins("http://localhost:3000").exposedHeaders("x-total-count");
             }
         };
     }
-    public void addCorsMappings(CorsRegistry registry){
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000").exposedHeaders("x-total-count");
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(Lab07Application.class, args);
     }
