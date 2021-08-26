@@ -1,13 +1,17 @@
 package se331.lab.rest.dao;
+
 import org.springframework.stereotype.Repository;
 import se331.lab.rest.entity.Event;
+import se331.lab.rest.entity.Organizer;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
 public class EventDaoImpl implements EventDao {
     List<Event> eventList;
+    List<Organizer> organizerList;
 
     @PostConstruct
     public void init() {
@@ -78,6 +82,38 @@ public class EventDaoImpl implements EventDao {
                 .petAllowed(false)
                 .organizer("Brody Kill")
                 .build());
+//////////////////////5.7///////////////
+        organizerList = new ArrayList<>();
+        organizerList.add(Organizer.builder()
+                .id(1L)
+                .name("Peter")
+                .address("Nan")
+                .build());
+        organizerList.add(Organizer.builder()
+                .id(2L)
+                .name("rimuru temp")
+                .address("Japan")
+                .build());
+        organizerList.add(Organizer.builder()
+                .id(3L)
+                .name("Spider man")
+                .address("England")
+                .build());
+        organizerList.add(Organizer.builder()
+                .id(4L)
+                .name("Naruto Usumaki")
+                .address("Japan")
+                .build());
+        organizerList.add(Organizer.builder()
+                .id(5L)
+                .name("Conan")
+                .address("Hawaii")
+                .build());
+        organizerList.add(Organizer.builder()
+                .id(6L)
+                .name("Somchai jaipain")
+                .address("Thailand")
+                .build());
     }
 
     @Override
@@ -89,12 +125,32 @@ public class EventDaoImpl implements EventDao {
     public List<Event> getEvents(Integer pageSize, Integer page) {
         pageSize = pageSize == null ? eventList.size() : pageSize;
         page = page == null ? 1 : page;
-        int firstIndex = (page -1)* pageSize;
-        return eventList.subList(firstIndex,firstIndex+pageSize);
+        int firstIndex = (page - 1) * pageSize;
+        return eventList.subList(firstIndex, firstIndex + pageSize);
     }
 
     @Override
     public Event getEvent(Long id) {
-       return  eventList.stream().filter(event -> event.getId().equals(id)).findFirst().orElse(null);
+        return eventList.stream().filter(event -> event.getId().equals(id)).findFirst().orElse(null);
+    }
+
+// 5.7/////////////////////////////////
+
+    @Override
+    public Integer getOrganizerSize() {
+        return organizerList.size();
+    }
+
+    @Override
+    public List<Organizer> getOrganizers(Integer pageSize, Integer page) {
+        pageSize = pageSize == null ? organizerList.size() : pageSize;
+        page = page == null ? 1 : page;
+        int firstIndex = (page - 1) * pageSize;
+        return organizerList.subList(firstIndex, firstIndex + pageSize);
+    }
+
+    @Override
+    public Organizer getOrganizer(Long id) {
+        return organizerList.stream().filter(organizer -> organizer.getId().equals(id)).findFirst().orElse(null);
     }
 }
